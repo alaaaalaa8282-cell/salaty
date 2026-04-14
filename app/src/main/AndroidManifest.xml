@@ -12,11 +12,11 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- صلاحيات الخدمات الأمامية -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- صلاحيات الرسم فوق التطبيقات -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -41,7 +41,7 @@
 
         <!-- النشاط الرئيسي -->
         <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Salaati">
@@ -53,7 +53,7 @@
 
         <!-- شاشة الأذان فل سكرين -->
         <activity
-            android:name=".presentation.ui.alarm.AlarmFullScreenActivity"
+            android:name=".ui.alarm.AlarmFullScreenActivity"
             android:exported="false"
             android:launchMode="singleInstance"
             android:showWhenLocked="true"
@@ -62,27 +62,21 @@
 
         <!-- خدمة تشغيل الأذكار -->
         <service
-            android:name=".service.azkar.AzkarPlaybackService"
-            android:exported="false"
-            android:foregroundServiceType="mediaPlayback" />
-
-        <!-- خدمة تشغيل الأذان -->
-        <service
-            android:name=".service.prayer.PrayerAlarmService"
+            android:name=".service.AzkarPlaybackService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
 
         <!-- مستلم التنبيهات -->
         <receiver
-            android:name=".service.receiver.AzkarAlarmReceiver"
+            android:name=".receiver.AzkarAlarmReceiver"
             android:exported="false" />
 
         <receiver
-            android:name=".service.receiver.PrayerAlarmReceiver"
+            android:name=".receiver.PrayerAlarmReceiver"
             android:exported="false" />
 
         <receiver
-            android:name=".service.receiver.BootCompletedReceiver"
+            android:name=".receiver.BootCompletedReceiver"
             android:exported="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
